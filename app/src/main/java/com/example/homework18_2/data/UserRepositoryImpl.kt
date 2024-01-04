@@ -18,6 +18,7 @@ class UserRepositoryImpl @Inject constructor(private val userService: UserServic
                     emit(Resource.Success(data = response.body()!!.map {
                         it.toDomain()
                     }))
+                    d("responseBody", "${response.body().toString()}")
                 }else{
                     emit(Resource.Error(errorMessage = response.errorBody().toString()))
                 }
