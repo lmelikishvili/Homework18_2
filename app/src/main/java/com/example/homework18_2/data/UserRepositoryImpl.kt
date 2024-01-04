@@ -12,7 +12,7 @@ class UserRepositoryImpl @Inject constructor(private val userService: UserServic
     override fun getUsers(): Flow<Resource<List<UserItem>>> {
         return flow {
             try {
-                emit(Resource.Loading(loading = true))
+                //emit(Resource.Loading(loading = true))
                 val response = userService.getUsers()
                 if (response.isSuccessful){
                     emit(Resource.Success(data = response.body()!!.map {
@@ -20,12 +20,12 @@ class UserRepositoryImpl @Inject constructor(private val userService: UserServic
                     }))
                     d("responseBody", "${response.body().toString()}")
                 }else{
-                    emit(Resource.Error(errorMessage = response.errorBody().toString()))
+                    //emit(Resource.Error(errorMessage = response.errorBody().toString()))
                 }
             }catch (t: Throwable){
                 d("responseError", "${t.message}")
             }
-            emit(Resource.Loading(loading = false))
+            //emit(Resource.Loading(loading = false))
         }
     }
 }
