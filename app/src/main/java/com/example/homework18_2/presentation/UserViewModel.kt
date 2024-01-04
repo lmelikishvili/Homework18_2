@@ -1,5 +1,6 @@
 package com.example.homework18_2.presentation
 
+import android.util.Log.d
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.homework18_2.data.common.Resource
@@ -25,6 +26,14 @@ class UserViewModel @Inject constructor(private val userRepository: UserReposito
                     is Resource.Success -> _userFlow.value = Resource.Success(data = it.data!!)
                     is Resource.Error -> _userFlow.value = Resource.Error(errorMessage = it.errorMessage!!)
                 }
+            }
+        }
+    }
+
+    fun getUserDetails(){
+        viewModelScope.launch {
+            userRepository.getUserDetails().collect{
+                d("collectedUserDetails", "${it.data}")
             }
         }
     }

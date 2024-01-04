@@ -18,6 +18,7 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::infl
     }
     override fun setup() {
         viewModel.getUsers()
+        viewModel.getUserDetails()
         with(binding) {
             usersRecyclerView.adapter = adapter
             usersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
