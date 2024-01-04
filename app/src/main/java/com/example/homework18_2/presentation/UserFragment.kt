@@ -22,7 +22,6 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::infl
             usersRecyclerView.adapter = adapter
             usersRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         }
-
     }
 
     override fun setupListeners() {
